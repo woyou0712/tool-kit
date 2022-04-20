@@ -12,9 +12,9 @@
   "author": "Kobold",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/woyou0712/new-dream"
+    "url": "https://github.com/woyou0712/tool-kit"
   },
-  "homepage": "https://github.com/woyou0712/new-dream",
+  "homepage": "https://github.com/woyou0712/tool-kit",
   "dependencies": {
     "js-md5": "^0.7.3"
   }
