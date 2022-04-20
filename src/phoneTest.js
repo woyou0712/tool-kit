@@ -1,0 +1,14 @@
+/**
+ * 验证联系方式
+ * @param {String} phone 联系号码字符串
+ * @returns Boolean
+ * */
+module.exports = function (phone) {
+  if (!phone) {
+    return false
+  }
+  phone = String(phone);
+  let reg = /^((0|(\+86))\s?)?1[3-9][0-9]{9}$/; // 手机
+  let reg2 = /^(\d{2,5}(\-|\s)?)?\d{7,8}$/; // 座机
+  return Boolean(reg.test(phone) || reg2.test(phone))
+}
