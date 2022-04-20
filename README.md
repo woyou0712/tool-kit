@@ -1,8 +1,8 @@
-# js常用工具集合
+# Js常用工具集合
 
 ## 简易的字符串加密和解码
 ```
-const { encode, decode } = require("tool-kit")
+const { encode, decode } = require("mini-toolkit")
 
 var text = '字符串可以存储一系列字符，如 "John Doe"。';
 var { data, key } = encode(text);
@@ -15,21 +15,21 @@ console.log(str) // 字符串可以存储一系列字符，如 "John Doe"。
 - list: 要打乱顺序的数组
 - key: String 非必传，打乱顺序依赖，不传则每次都随机打乱顺序
 ```
-const { arrayDisrupt } = require("tool-kit");
+const { arrayDisrupt } = require("mini-toolkit");
 arrayDisrupt(list [,key]);
 ```
 
 ## 校验联系方式
 - phone: String
 ```
-const { phoneTest } = require("tool-kit");
+const { phoneTest } = require("mini-toolkit");
 phoneTest(phone);
 ```
 
 
 ## 浏览器复制字符串到剪切板
 ```
-const { copy } = require("tool-kit");
+const { copy } = require("mini-toolkit");
 copy(String);
 ```
 
