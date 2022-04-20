@@ -6,7 +6,7 @@ const { encode, decode } = require("mini-toolkit")
 
 var text = '字符串可以存储一系列字符，如 "John Doe"。';
 var { data, key } = encode(text);
-console.log(data, key) // 5b577b264e3253ef4ee55b5850a84e007cfb52175b577b26ff0c598220224a6f686e20446f65223002 44444444444444222222222224
+console.log(data, key) // 5b577b264e3253ef4ee55b5850a84e007cfb52175b577b26ff0c598220224a6f686e20446f65223002 34143211241
 var str = decode(data, key);
 console.log(str) // 字符串可以存储一系列字符，如 "John Doe"。
 ```
