@@ -1,5 +1,8 @@
 # Js常用工具集合
-
+- 安装
+```
+$ npm install -S mini-toolkit
+```
 ## 简易的字符串加密和解码
 ```
 const { encode, decode } = require("mini-toolkit")
