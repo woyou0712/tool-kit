@@ -1,13 +1,18 @@
 {
   "name": "mini-toolkit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Js小工具集合",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "js工具集合","字符串加密","数组乱序","校验联系方式","浏览器复制文本到剪切板"
+    "js工具集合",
+    "字符串加密",
+    "数组乱序",
+    "校验联系方式",
+    "校验电子邮箱",
+    "浏览器复制文本到剪切板"
   ],
   "author": "Kobold",
   "license": "ISC",

@@ -29,6 +29,13 @@ const { phoneTest } = require("mini-toolkit");
 phoneTest(phone);
 ```
 
+## 校验电子邮箱
+- email: String
+```
+const { emailTest } = require("mini-toolkit");
+emailTest(email);
+```
+
 
 ## 浏览器复制字符串到剪切板
 ```
