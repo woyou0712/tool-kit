@@ -8,7 +8,7 @@ module.exports = function (phone) {
     return false
   }
   phone = String(phone);
-  let reg = /^((0|(\+86))\s?)?1[3-9][0-9]{9}$/; // 手机
-  let reg2 = /^(\d{2,5}(\-|\s)?)?\d{7,8}$/; // 座机
+  let reg = /^((0|(\+86))\s?)?1[3-9]\d{9}$/; // 手机
+  let reg2 = /^([0,4,8]\d{2,3}(\-|\s)?)?\d{7,8}$/; // 座机
   return Boolean(reg.test(phone) || reg2.test(phone))
 }
