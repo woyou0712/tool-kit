@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../dist/main.min.js" ></script>
+  <style>
+    body{
+      padding:0 30px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    textarea,input{
+      padding: 5px 8px;
+    }
+    span.required{
+      color: brown;
+    }
+    .block{
+      margin: 10px;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="block">
+  <h3>复制</h3>
+  <div><span  id="copy-text">尝试复制这句话</span> <button onclick="javascript:copy();">复制</button></div>
+  <script>
+    function copy() {
+      let text = document.getElementById("copy-text");
+      $toolkit.copy(text.innerHTML).then(res=>{
+        alert("复制成功")
+      })
+    }
+  </script>
+</div>
+<div class="block">
+  <h3>加密字符串</h3>
+  <div>
+    <textarea id="en-text" cols="30" rows="10" placeholder="要加密的文本"></textarea>
+  </div>
+  <button onclick="javascript:encode();">加密</button>
+  <div>加密Data：<span id="en-data"></span></div>
+  <div>加密Key：<span id="en-key"></span></div>
+  <script>
+    function encode() {
+      let enText = document.getElementById("en-text");
+      let enCode = $toolkit.encode(enText.value);
+      document.getElementById("en-data").innerText = enCode.data;
+      document.getElementById("en-key").innerText = enCode.key;
+    }
+  </script>
+
+</div>
+<div class="block">
+  <h3>解密字符串</h3>  
+  <div><span class="required">*</span>Data：<input id="de-data" type="text"/></div>
+  <div><span class="required">*</span>Key：<input id="de-key" type="text"/></div>
+  <button onclick="javascript:decode();">解密</button>
+  <div>解密结果：<span id="de-text" ></span></div>
+  <script>
+    function decode() {
+      let deData = document.getElementById("de-data");
+      let deKey = document.getElementById("de-key");
+      console.log(deData.value,deKey.value)
+      let deText = $toolkit.decode(deData.value,deKey.value);
+      console.log(deText)
+      document.getElementById("de-text").innerText = deText;
+    }
+  </script>
+</div>
+
+<div class="block">
+  <h3>字符串验证</h3>
+  <div>
+    <input type="text" id="test-string"/> <button onclick="javascript:testPhone();">手机验证</button><button onclick="javascript:testEmail();">邮箱验证</button>
+  </div>
+  <script>
+    function testPhone() {
+      let testStr = document.getElementById("test-string");
+      alert($toolkit.phoneTest(testStr.value))
+    }
+    function testEmail() {
+      let testStr = document.getElementById("test-string");
+      alert($toolkit.emailTest(testStr.value))
+    }
+  </script>
+</div>
+<div class="block">
+  <h3>打乱数组</h3>
+  <div><textarea id="set-array" type="text"  cols="30" rows="10" placeholder="输入数组" > </textarea></div>
+  <div><input id="array-key" type="text" placeholder="打乱依赖"/>打乱依赖非必要，不传依赖每次随机打乱，使用同一依赖则打乱顺序相同</div>
+  <button onclick="javascript:arrayDisrupt();">打乱</button>
+  <div>打乱结果：<span id="res-array" ></span></div>
+  <script>
+    function arrayDisrupt() {
+      let deData = document.getElementById("set-array");
+      let key = document.getElementById("array-key");
+      let deText = $toolkit.arrayDisrupt(eval(deData.value),key.value);
+      document.getElementById("res-array").innerHTML = JSON.stringify(deText);
+    }
+  </script>
+</div>
+<div class="block">
+  <h3>导出Xlsx</h3>
+  <div>
+    <pre>
+      [
+        {name:'表1',data : [['姓名', '年龄'],['隔壁老王', 30],['小三', '20'],['老表', '25'],]},
+        {name:'表2',data : [["姓名",'体重', '身高'],['隔壁老王',120, 180],['老表',180, 160],]},
+      ]
+    </pre>
+  </div>
+  <button onclick="javascript:exportExcel();">导出</button>
+  <script>
+    function exportExcel() {
+      let datas = [
+        {name:'表1',data : [['姓名', '年龄'],['隔壁老王', 30],['小三', '20'],['老表', '25'],]},
+        {name:'表2',data : [["姓名",'体重', '身高'],['隔壁老王',120, 180],['老表',180, 160],]},
+      ]
+      // 第二个参数为文件名称，非必传
+      $toolkit.exportExcel(datas)
+    }
+  </script>
+</div>
+<div class="block">
+  <h3>解析Xlsx数据</h3>
+  <input id="select-file" type="file"/>
+  <div id="file-data"> </div>
+  <script>
+    let selectFile = document.getElementById("select-file");
+    let fileData = document.getElementById("file-data");
+    selectFile.addEventListener("change",readFileData)
+    function readFileData(e) {
+      console.log(e.target.files)
+      // 第二个参数为表名称数组，非必传
+      $toolkit.readFileData(e.target.files[0]).then(res=>{
+        fileData.innerHTML = JSON.stringify(res)
+      })
+      selectFile.value = null
+    }
+  </script>
+</div>
+<div class="block">
+  <h3>数值转换XLSX列头</h3>
+  <input id="num-input" type="text"/>
+  <button onclick="javascript:setXlsxCode();">转换</button>
+  <div id="num-xlsx-data"> </div>
+  <script>
+    let num = document.getElementById("num-input");
+    let numdata = document.getElementById("num-xlsx-data");
+    function setXlsxCode() {
+      let data = $toolkit.setXlsxCode(num.value)
+      numdata.innerHTML = data
+    }
+  </script>
+</div>
+</body>
+</html>

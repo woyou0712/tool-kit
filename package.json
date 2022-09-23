@@ -1,10 +1,11 @@
 {
   "name": "mini-toolkit",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "Js小工具集合",
-  "main": "index.js",
+  "main": "src/main.js",
+  "module": "src/default.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production"
   },
   "keywords": [
     "js工具集合",
@@ -12,7 +13,8 @@
     "数组乱序",
     "校验联系方式",
     "校验电子邮箱",
-    "浏览器复制文本到剪切板"
+    "浏览器复制文本到剪切板",
+    "XLSX下载/解析"
   ],
   "author": "Kobold",
   "license": "ISC",
@@ -21,6 +23,21 @@
   },
   "homepage": "https://github.com/woyou0712/tool-kit",
   "dependencies": {
-    "js-md5": "^0.7.3"
+    "@types/node": "^18.7.18",
+    "js-md5": "^0.7.3",
+    "save-dev": "^0.0.1-security",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "exports": {
+    ".": {
+      "require": "./src/main.js",
+      "import": "./src/default.js"
+    }
   }
 }

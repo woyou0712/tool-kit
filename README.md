@@ -3,9 +3,26 @@
 ```
 $ npm install -S mini-toolkit
 ```
+## 引入方式
+- `HTML`引入
+```
+<script src="./dist/main.min.js" ></script>
+<script>
+  window.onload = function(){
+    const {exportExcel, readFileData, setXlsxCode, encode, decode, arrayDisrupt, copy, phoneTest, emailTest} = $toolkit;
+  }
+</script>
+```
+- `require`引入
+```
+const {exportExcel, readFileData, setXlsxCode, encode, decode, arrayDisrupt, copy, phoneTest, emailTest} = require("mini-toolkit");
+```
+- `import`引入
+```
+import {exportExcel, readFileData, setXlsxCode, encode, decode, arrayDisrupt, copy, phoneTest, emailTest} from "mini-toolkit";
+```
 ## 简易的字符串加密和解码
 ```
-const { encode, decode } = require("mini-toolkit")
 
 var text = '字符串可以存储一系列字符，如 "John Doe"。';
 var { data, key } = encode(text);
@@ -18,28 +35,45 @@ console.log(str) // 字符串可以存储一系列字符，如 "John Doe"。
 - list: 要打乱顺序的数组
 - key: String 非必传，打乱顺序依赖，不传则每次都随机打乱顺序
 ```
-const { arrayDisrupt } = require("mini-toolkit");
 arrayDisrupt(list [,key]);
 ```
 
 ## 校验联系方式
 - phone: String
 ```
-const { phoneTest } = require("mini-toolkit");
 phoneTest(phone);
 ```
 
 ## 校验电子邮箱
 - email: String
 ```
-const { emailTest } = require("mini-toolkit");
 emailTest(email);
 ```
 
 
 ## 浏览器复制字符串到剪切板
 ```
-const { copy } = require("mini-toolkit");
 copy(String);
 ```
-
+## 导出表格
+```
+let datas = [
+  {name:'表1',data : [['姓名', '年龄'],['隔壁老王', 30],['小三', '20'],['老表', '25'],]},
+  {name:'表2',data : [["姓名",'体重', '身高'],['隔壁老王',120, 180],['老表',180, 160],]},
+]
+// 第二个参数为文件名称，非必传
+exportExcel(datas)
+```
+## 解析表格数据
+```
+function inputFileChange(e) {
+  // 第二个参数为表名称数组，非必传
+  readFileData(e.target.files[0]).then(res=>{
+    console.log(res)
+  })
+}
+```
+## 数值转换XLSX列头
+```
+let code = setXlsxCode(number);
+```
