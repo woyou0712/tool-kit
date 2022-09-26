@@ -1,6 +1,6 @@
 {
   "name": "mini-toolkit",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Js小工具集合",
   "main": "src/main.js",
   "module": "src/default.js",

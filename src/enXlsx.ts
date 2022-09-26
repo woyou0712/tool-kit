@@ -100,7 +100,7 @@ function exportExcel(datas: Datas, tableName?: string) {
  * @param { String[]? } tNames 表名称列表
  * @returns 
  */
-function readFileData(file: File, tNames: string[]): Promise<Datas> {
+function readFileData(file: File, tNames?: string[]): Promise<Datas> {
   return new Promise((next, error) => {
     let reader = new FileReader();
     reader.onload = function (e) {
