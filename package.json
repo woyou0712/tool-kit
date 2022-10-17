@@ -1,11 +1,11 @@
 {
   "name": "mini-toolkit",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Js小工具集合",
   "main": "src/main.js",
   "module": "src/default.js",
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "tsc src/main && webpack --mode production"
   },
   "keywords": [
     "js工具集合",

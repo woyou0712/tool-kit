@@ -7,7 +7,14 @@ var copy_1 = require("./copy");
 var phoneTest_1 = require("./phoneTest");
 var emailTest_1 = require("./emailTest");
 var enXlsx_1 = require("./enXlsx");
-window.$toolkit = {
+var $global;
+try {
+    $global = window ? window : global;
+}
+catch (e) {
+    $global = global;
+}
+$global.$toolkit = {
     exportExcel: enXlsx_1["default"].exportExcel,
     readFileData: enXlsx_1["default"].readFileData,
     setXlsxCode: enXlsx_1["default"].setXlsxCode,

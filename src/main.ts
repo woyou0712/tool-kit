@@ -4,8 +4,13 @@ import $copy from "./copy";
 import $phoneTest from "./phoneTest";
 import $emailTest from "./emailTest";
 import $enXlsx from "./enXlsx";
-
-(window as any).$toolkit = {
+let $global: any;
+try {
+  $global = window ? window : global
+} catch (e) {
+  $global = global
+}
+$global.$toolkit = {
   exportExcel: $enXlsx.exportExcel,
   readFileData: $enXlsx.readFileData,
   setXlsxCode: $enXlsx.setXlsxCode,
